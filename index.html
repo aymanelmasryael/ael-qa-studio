@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEL QA Studio — Audit, Review, Excel</title>
+  <meta name="description" content="AEL QA Studio — a comprehensive quality audit workspace for prompts, checklists, standards, knowledge, examples, references, and templates.">
+
+  <meta property="og:title" content="AEL QA Studio — Audit, Review, Excel">
+  <meta property="og:description" content="A comprehensive quality audit workspace for prompts, checklists, standards, knowledge, examples, references, and templates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aelstudio.com/qa/">
+  <meta property="og:image" content="https://aelstudio.com/qa/og-image.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AEL QA Studio — Audit, Review, Excel">
+  <meta name="twitter:description" content="A comprehensive quality audit workspace for prompts, checklists, standards, knowledge, examples, references, and templates.">
+  <meta name="twitter:image" content="https://aelstudio.com/qa/og-image.png">
+
+  <link rel="canonical" href="https://aelstudio.com/qa/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="app-header__brand">
+      <svg class="app-header__logo" width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="34" height="34" rx="8" fill="var(--logo-bg, #1a1a2e)" stroke="var(--logo-border, #e94560)" stroke-width="2"/>
+        <text x="10" y="23" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="var(--logo-a, #e94560)">A</text>
+        <text x="19" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="var(--logo-q, #f5c518)">Q</text>
+      </svg>
+      <div class="app-header__titles">
+        <h1 class="app-header__title">AEL QA Studio</h1>
+        <p class="app-header__tagline">Audit <span aria-hidden="true">·</span> Review <span aria-hidden="true">·</span> Excel</p>
+      </div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="10" cy="10" r="4" fill="currentColor"/>
+        <path d="M10 1v2M10 17v2M1 10h2M17 10h2M3.93 3.93l1.41 1.41M14.66 14.66l1.41 1.41M3.93 16.07l1.41-1.41M14.66 5.34l1.41-1.41" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M17.39 13.07A7.5 7.5 0 016.93 2.61 7.5 7.5 0 1017.39 13.07z" fill="currentColor"/>
+      </svg>
+    </button>
+  </header>
+
+  <nav id="category-nav" class="app-nav"></nav>
+
+  <main class="app-main">
+
+    <section id="dashboard-view" class="dashboard">
+      <h2 class="dashboard__greeting">Welcome to AEL QA Studio</h2>
+      <p class="dashboard__subtitle">Select a category to begin your quality audit</p>
+
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card" id="stat-categories">
+          <span class="stat-card__value" data-count="categories">0</span>
+          <span class="stat-card__label">Categories</span>
+        </div>
+        <div class="stat-card" id="stat-prompts">
+          <span class="stat-card__value" data-count="prompts">0</span>
+          <span class="stat-card__label">Prompts</span>
+        </div>
+        <div class="stat-card" id="stat-checklists">
+          <span class="stat-card__value" data-count="checklists">0</span>
+          <span class="stat-card__label">Checklists</span>
+        </div>
+        <div class="stat-card" id="stat-standards">
+          <span class="stat-card__value" data-count="standards">0</span>
+          <span class="stat-card__label">Standards</span>
+        </div>
+      </div>
+
+      <div class="recent-section">
+        <h3 class="recent-section__title">Recent Activity</h3>
+        <ul class="recent-list" id="recent-list"></ul>
+      </div>
+    </section>
+
+    <section id="category-view" class="category-view" hidden>
+      <header class="category-header">
+        <span class="category-header__icon" id="category-icon"></span>
+        <div class="category-header__titles">
+          <h2 class="category-header__name" id="category-name"></h2>
+          <p class="category-header__desc" id="category-desc"></p>
+        </div>
+      </header>
+
+      <nav class="category-tabs" id="category-tabs" role="tablist"></nav>
+
+      <div class="category-content" id="category-content"></div>
+    </section>
+
+    <section id="search-view" class="search-view" hidden>
+      <div class="search-view__bar">
+        <input type="search" class="search-view__input" id="search-input" placeholder="Search prompts, checklists, standards…" aria-label="Search across all categories">
+      </div>
+      <div class="search-view__results" id="search-results"></div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p class="app-footer__copy">&copy; 2026 AEL Digital Studio. All rights reserved.</p>
+    <nav class="app-footer__links">
+      <a href="#" class="app-footer__link">Privacy</a>
+      <a href="#" class="app-footer__link">Terms</a>
+      <a href="https://github.com/" class="app-footer__link" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </footer>
+
+  <script src="data/categories.js"></script>
+  <script src="data/prompts.js"></script>
+  <script src="data/checklists.js"></script>
+  <script src="data/references.js"></script>
+  <script src="data/templates.js"></script>
+  <script src="data/knowledge.js"></script>
+  <script src="data/standards.js"></script>
+  <script src="data/examples.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
