@@ -1,4 +1,7 @@
-/* ============================================================
+(function() {
+  'use strict';
+
+  /* ============================================================
    AEL QA Studio — Application Logic
    AEL Digital Studio · Audit · Review · Excel
    ============================================================ */
@@ -1041,3 +1044,4 @@ function init() {
 /* ── 26. Bootstrap ────────────────────────────────────────── */
 
 document.addEventListener('DOMContentLoaded', init);
+})();
